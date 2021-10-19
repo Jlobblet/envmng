@@ -30,12 +30,13 @@ dependencies:
 - process
 - directory
 - filepath
+- unix
 
 library:
   source-dirs: src
 
 executables:
-  envmng:
+  envmng-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:

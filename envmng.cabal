@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d03901b27de0bce6a43f1796eb343b651b7805fdc2a3bb177b78c485b72ea601
+-- hash: 1a147b6ffd1f3ab4d36f8e5950404be7ceb20fdd6fd71f3e27a75403d7de6f90
 
 name:           envmng
 version:        0.1.0.0
@@ -46,6 +46,7 @@ library
     , regex-base
     , regex-pcre
     , text
+    , unix
   default-language: Haskell2010
 
 executable envmng-exe
@@ -67,6 +68,7 @@ executable envmng-exe
     , regex-base
     , regex-pcre
     , text
+    , unix
   default-language: Haskell2010
 
 test-suite envmng-test
@@ -89,4 +91,5 @@ test-suite envmng-test
     , regex-base
     , regex-pcre
     , text
+    , unix
   default-language: Haskell2010
