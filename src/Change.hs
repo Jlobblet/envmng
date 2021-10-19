@@ -30,7 +30,7 @@ handleChange change = do
   let filepath = dir </> relativePath change
   exists <- doesFileExist filepath
   if exists
-    then ExitSuccess <$ putStrLn (". " ++ filepath) `withErrorCtx` ("Could run run file:" ++ filepath)
+    then ExitSuccess <$ putStrLn (". " ++ filepath ++ ";") `withErrorCtx` ("Could run run file:" ++ filepath)
     else ExitFailure 1 <$ print ("Could not find file " ++ filepath)
     where
     relativePath :: Change -> FilePath
