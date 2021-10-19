@@ -31,7 +31,7 @@ handleChange change = do
   exists <- doesFileExist filepath
   if exists
     then ExitSuccess <$ putStrLn (". " ++ filepath ++ ";") `withErrorCtx` ("Could run run file:" ++ filepath)
-    else ExitFailure 1 <$ print ("Could not find file " ++ filepath)
+    else ExitFailure 1 <$ hPutStrLn stderr ("Could not find file " ++ filepath)
     where
     relativePath :: Change -> FilePath
     relativePath (Add a) = T.unpack a </> "activate"
