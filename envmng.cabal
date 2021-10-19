@@ -1,0 +1,92 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: d03901b27de0bce6a43f1796eb343b651b7805fdc2a3bb177b78c485b72ea601
+
+name:           envmng
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/envmng#readme>
+homepage:       https://github.com/githubuser/envmng#readme
+bug-reports:    https://github.com/githubuser/envmng/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2021 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/envmng
+
+library
+  exposed-modules:
+      Change
+      Lib
+      Opts
+      Parsers
+  other-modules:
+      Paths_envmng
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , directory
+    , filepath
+    , megaparsec
+    , optparse-applicative
+    , parser-combinators
+    , process
+    , regex-base
+    , regex-pcre
+    , text
+  default-language: Haskell2010
+
+executable envmng-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_envmng
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , directory
+    , envmng
+    , filepath
+    , megaparsec
+    , optparse-applicative
+    , parser-combinators
+    , process
+    , regex-base
+    , regex-pcre
+    , text
+  default-language: Haskell2010
+
+test-suite envmng-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_envmng
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , directory
+    , envmng
+    , filepath
+    , megaparsec
+    , optparse-applicative
+    , parser-combinators
+    , process
+    , regex-base
+    , regex-pcre
+    , text
+  default-language: Haskell2010
