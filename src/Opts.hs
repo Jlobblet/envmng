@@ -20,8 +20,7 @@ handleOpts (List f) = do
   pure ExitSuccess
 
 getPred :: Maybe T.Text -> FilePath -> Bool
-getPred Nothing _ = True
-getPred (Just t) s = s =~ unpack t
+getPred mt s = maybe True ((s =~) . unpack) mt
 
 newtype Environment = Environment (FilePath, Scripts)
 
