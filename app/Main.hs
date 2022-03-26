@@ -9,12 +9,7 @@ import System.Exit (exitWith)
 import Opts (handleOpts)
 
 main :: IO ExitCode
-main = do
-  changes <- parseChanges <$> getArgs
-  code <- case changes of
-    Left pebs -> do
-      args <- execParser opts
-      handleOpts args
-    Right chs -> runChanges chs
-
-  exitWith code
+main = getArgs >>= either parseOpts runChanges . parseChanges
+  where parseOpts = const $ do
+        args <- execParser opts
+        handleOpts args
