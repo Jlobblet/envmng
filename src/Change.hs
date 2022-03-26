@@ -5,17 +5,16 @@ module Change
   )
 where
 
-import Control.Exception (IOException, catch, throwIO)
-import Control.Monad (msum)
+import GHC.IO.Exception (ExitCode (ExitSuccess, ExitFailure))
+import Parsers (Change (..))
 import qualified Data.Text as T
 import Lib (envMngDir, withErrorCtx)
-import Parsers (Change (..))
-import System.Directory (doesFileExist, getHomeDirectory)
-import System.Exit (ExitCode (..))
 import System.FilePath ((</>))
-import System.IO (hPutStrLn, stderr)
-import System.Posix (getParentProcessID)
-import System.Process (readProcessWithExitCode, system)
+import System.Directory (doesFileExist)
+import Control.Monad (msum)
+import System.IO (hPutStrLn)
+import GHC.IO.Handle.FD (stderr)
+
 
 eitherCode :: ExitCode -> Either Int ()
 eitherCode ExitSuccess = Right ()
