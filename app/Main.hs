@@ -9,7 +9,5 @@ import System.Exit (exitWith)
 import Opts (handleOpts)
 
 main :: IO ExitCode
-main = getArgs >>= either parseOpts runChanges . parseChanges
-  where parseOpts = const $ do
-          args <- execParser opts
-          handleOpts args
+main = getArgs >>= either (const parseOpts) runChanges . parseChanges
+  where parseOpts = execParser opts >>= handleOpts
