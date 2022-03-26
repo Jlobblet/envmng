@@ -14,8 +14,8 @@ import System.Directory (doesFileExist, getHomeDirectory)
 import System.Exit (ExitCode (..))
 import System.FilePath ((</>))
 import System.IO (hPutStrLn, stderr)
-import System.Process (system, readProcessWithExitCode)
 import System.Posix (getParentProcessID)
+import System.Process (readProcessWithExitCode, system)
 
 eitherCode :: ExitCode -> Either Int ()
 eitherCode ExitSuccess = Right ()
@@ -32,7 +32,7 @@ handleChange change = do
   if exists
     then ExitSuccess <$ putStrLn (". " ++ filepath ++ ";") `withErrorCtx` ("Could run run file:" ++ filepath)
     else ExitFailure 1 <$ hPutStrLn stderr ("Could not find file " ++ filepath)
-    where
+  where
     relativePath :: Change -> FilePath
     relativePath (Add a) = T.unpack a </> "activate"
     relativePath (Remove r) = T.unpack r </> "deactivate"

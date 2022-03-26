@@ -8,14 +8,14 @@ module Parsers
   )
 where
 
-import Data.Char (isLetter, isSpace, isNumber)
+import Data.Char (isLetter, isNumber, isSpace)
 import Data.Either (isLeft, lefts, rights)
 import qualified Data.Text as T
 import Data.Void (Void)
-import Options.Applicative (Parser, ParserInfo, argument, auto, fullDesc, header, help, helper, info, progDesc, (<**>), hsubparser, command, optional)
+import Options.Applicative (Parser, ParserInfo, argument, auto, command, fullDesc, header, help, helper, hsubparser, info, optional, progDesc, (<**>))
+import Options.Applicative.Builder (eitherReader)
 import Text.Megaparsec (MonadParsec (takeWhile1P), ParseErrorBundle, Parsec, parse, (<|>))
 import Text.Regex.PCRE (Regex)
-import Options.Applicative.Builder (eitherReader)
 
 data Change
   = Add T.Text
