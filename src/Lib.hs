@@ -7,9 +7,6 @@ import System.Directory (getHomeDirectory)
 import System.FilePath ((</>))
 import System.IO (hPutStrLn, stderr)
 
-dup :: a -> (a, a)
-dup a = (a, a)
-
 withErrorCtx :: IO a -> String -> IO a
 x `withErrorCtx` str = catch x addContext
   where
