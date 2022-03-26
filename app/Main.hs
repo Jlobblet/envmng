@@ -11,5 +11,5 @@ import Opts (handleOpts)
 main :: IO ExitCode
 main = getArgs >>= either parseOpts runChanges . parseChanges
   where parseOpts = const $ do
-        args <- execParser opts
-        handleOpts args
+          args <- execParser opts
+          handleOpts args
